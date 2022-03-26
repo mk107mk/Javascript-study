@@ -1,3 +1,5 @@
+//함수
+
 // function showMessage(from, text = "no text data"){
 //     console.log(`${from} , ${text}` );
 // }
