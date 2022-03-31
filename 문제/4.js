@@ -2,14 +2,6 @@
 //입력되는 객체의 프로퍼티와, 형태는 달라질 수 있다.
 //힌트) 재귀호출, typeof
 
-const original = {
-    a: 1,
-    b: 'test',
-    c: [1, 2, 3, 4],
-    d: { a: 2, b: 3 },
-    e: { arr: [4, 9, 16], obj: { a: 6, b: 7, c: 8 } },
-    f: [{ k: 7 }, { j: 10 }, { f: 13 }]
-};
 
 // function deepCopy(obj) {
 //     return {
@@ -24,53 +16,72 @@ const original = {
 
 /***************************************************************************** */
 
-
-
-
-function deepCopy(obj) {
-    let cloneList = {}
-    let arr = []
-
-    for (let key in obj) {
-
-        if (typeof obj[key] !== 'object') {
-
-            cloneList = { ...cloneList, [key]: obj[key] }
-            continue;
-
-        }
-        if (Array.isArray(obj[key]) == true) {
-            
-            cloneList = {...cloneList, [key] : [...obj[key]] }
-
-        } else {
-
-            cloneList = { ...cloneList }
-
-        }
-        cloneList[key] = deepCopy(obj[key])
-
-    }
-    return cloneList
+const original = {
+    a: 1,
+    b: 'test',
+    c: [1, 2, 3, 4],
+    d: { a: 2, b: 3 },
+    e: { arr: [4, 9, 16], obj: { a: 6, b: 7, c: 8 } },
+    f: [{ k: 7 }, { j: 10 }, { f: 13 }]
 }
 
-deepCopy(original);
+function deepCopyValue(value) {
+    let cloneValue;
+    cloneValue = value;
 
-const cloned = deepCopy(original);
+    return cloneValue;
+}
+
+function deepCopyObj(value) {
+    let cloneObj = {}
+    cloneObj = { ...cloneObj, ...value }
+
+    return cloneObj;
+}
+
+function deepCopyArr(value) {
+    let cloneArr = []
+    cloneArr = [...cloneArr, ...value];
+
+    return cloneArr;
+}
+
+
+function deepCopy(value) {
+
+    let result;
+
+    if (typeof value !== 'object') {   // 값일때
+        result = deepCopyValue(value);
+
+    } else if (Array.isArray(value) == true) { // 배열일 때
+
+        result = deepCopyArr(value);
+        value.forEach((forValue, index) => {
+            value[index] = deepCopy(forValue);
+        })
+
+    } else {                                    //객체일때
+
+        result = deepCopyObj(value);
+        for (let key in value) {
+            value[key] = deepCopy(value[key])
+        }
+
+    }
+
+    return result;
+}
+
+const clonedList = deepCopy(original);
+
 original.a = 1717;
 original.b = 'test1717';
 original.c[0] = 1717;
 original.d.a = 1717;
-original.e.arr[0] = 1717;
-original.f[0].k = 1717;
+original.e.arr[0] = 177;
+original.f[0].k = 177;
 
 
 console.log(original);
-
-// console.log(origianl.e.arr);
-// console.log(origianl.f[0]);
-
-console.log(cloned);
-
-// console.log(cloned.e.arr);
-// console.log(cloned.f[0]); 
+console.log(clonedList);
