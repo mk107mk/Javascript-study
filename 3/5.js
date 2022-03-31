@@ -17,6 +17,7 @@ console.log(func()(1));
 
 
 let test2;
+let test3;
 
 function func2(){
     let a = 0;
@@ -24,6 +25,11 @@ function func2(){
       test2 = function(value){
         a = value + a;
        return a; 
+    }
+
+    test3 = function(value){
+        a = a-value;
+        return a;
     }
 }
 
