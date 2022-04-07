@@ -56,4 +56,4 @@ if(false){
 }
 var value;
 
-console.log(value);
+console.log(value); // undefined
