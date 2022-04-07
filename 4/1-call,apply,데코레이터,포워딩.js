@@ -23,35 +23,35 @@
 
 // let wrappedtest = testwrapper();
 
-// function slow(x){
-//     console.log(`slow(${x})을/를 호출함`);
-//     return x;
-// }
+function slow(x){
+    console.log(`slow(${x})을/를 호출함`);
+    return x;
+}
 
-// function cachingDecorator(func) {
-//     let cache = new Map();
+function cachingDecorator(func) {
+    let cache = new Map();
 
-//     return function(x){
-//         if(cache.has(x)){
-//             return cache.get(x);
-//         }
+    return function(x){
+        if(cache.has(x)){
+            return cache.get(x);
+        }
 
-//         let result = func(x);
+        let result = func(x);
 
-//         cache.set(x, result);
-//         return result;
-//     };
+        cache.set(x, result);
+        return result;
+    };
 
    
-// }
+}
 
-// slow = cachingDecorator(slow);
+slow = cachingDecorator(slow);
 
-// console.log(slow(1));
-// console.log('다시 호출: ' + slow(1));
+console.log(slow(1));
+console.log('다시 호출: ' + slow(1));
 
-// console.log(slow(2));
-// console.log('다시 호출' + slow(2));
+console.log(slow(2));
+console.log('다시 호출' + slow(2));
 
 // 인수로 받은 함수의 행동을 변경시켜주는 함수를 데코레이터 라고 한다
 
@@ -59,9 +59,9 @@
 // 캐싱 로직이 분리되어 slow 자체의 복잡성이 증가하지 않는다.
 // 필요하다면 여러개의 데코레이터를 조합해서 사용할 수 도 있다.
 
-//func.call을 사용해 컨텍스트 지정하기
+// func.call을 사용해 컨텍스트 지정하기
 
-//캐싱 데코레이터는 객체 메서드에 사용하기엔 적합하지 않다
+// 캐싱 데코레이터는 객체 메서드에 사용하기엔 적합하지 않다
 
 // let worker = {
 //     someMethod(){
@@ -145,10 +145,55 @@
 
 //야러 인수 전달하기
 
-let worker = {
-    slow(min,max){
-        return min + max;
-    }
-};
+// let worker = {
+//     slow(min,max){
+//         return min + max;
+//     }
+// };
 
-worker.slow = cachingDecorator(worker.slow);
+// worker.slow = cachingDecorator(worker.slow);
+
+// let worker = {
+//     slow(min, max){
+//         console.log(`slow(${min},${max})을/를 호출함`);
+//         return min + max;
+//     }
+// };
+
+// function cachingDecorator(func,hash){
+//     let cache = new Map();
+//     return function(){
+//         let key = hash(arguments);
+//         if(cache.has(key)){
+//             return cache.get(key);
+//         }
+//         let result = func.call(this, ...arguments);
+
+//         cache.set(key,result);
+//         return result;
+//     };
+// }
+
+// function hash(args){
+//     return args[0] + ',' + args[1];
+// }
+
+// worker.slow = cachingDecorator(worker.slow, hash);
+
+// console.log(worker.slow(3,5));
+// console.log('다시 호출: ' + worker.slow(3,5));
+
+
+//func.apply
+
+//func.apply(context, args);
+
+//func.call(context, ...args);
+//func.apply(context, args);
+
+//call은 args를 분해해 call애 전달할 수 있도록 해줍니다.
+//apply는 유사 배열 형태의 args만 받는다.
+
+// let wrapper = function(){
+//     return func.apply(this. arguments);
+// }
