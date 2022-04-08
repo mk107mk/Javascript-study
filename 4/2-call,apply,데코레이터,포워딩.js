@@ -1,57 +1,35 @@
-//캐싱 데코레이터
+// 코드 변경없이 캐싱 기능 추가하기
 
-// function test(x , y , z){
-//     console.log(x ,y, z);
-// }
-// test(1,2,1);
-// test(1,2,13);
-// test(1,2,16);
-// test(1,2,12);
-// test(1,2,11);
-// test(1,2,9);
-// test(1,2,3);
-// test(1,2,12);
-// test(1,2,10);
-// test(1,2,2);
 
-// function testwrapper(){
-
-//     return function(value){
-//         test(1,2,value);
-//     }
+// function slow(x){
+//     console.log(`slow(${x})을/를 호출함`);
+//     return x;
 // }
 
-// let wrappedtest = testwrapper();
+// function cachingDecorator(func) {
+//     let cache = new Map();
 
-function slow(x){
-    console.log(`slow(${x})을/를 호출함`);
-    return x;
-}
+//     return function(x){
+//         if(cache.has(x)){
+//             return cache.get(x);
+//         }
 
-function cachingDecorator(func) {
-    let cache = new Map();
+//         let result = func(x);
 
-    return function(x){
-        if(cache.has(x)){
-            return cache.get(x);
-        }
-
-        let result = func(x);
-
-        cache.set(x, result);
-        return result;
-    };
+//         cache.set(x, result);
+//         return result;
+//     };
 
    
-}
+// }
 
-slow = cachingDecorator(slow);
+// slow = cachingDecorator(slow);
 
-console.log(slow(1));
-console.log('다시 호출: ' + slow(1));
+// console.log(slow(1));
+// console.log('다시 호출: ' + slow(1));
 
-console.log(slow(2));
-console.log('다시 호출' + slow(2));
+// console.log(slow(2));
+// console.log('다시 호출' + slow(2));
 
 // 인수로 받은 함수의 행동을 변경시켜주는 함수를 데코레이터 라고 한다
 
@@ -197,3 +175,33 @@ console.log('다시 호출' + slow(2));
 // let wrapper = function(){
 //     return func.apply(this. arguments);
 // }
+
+
+
+
+////////////////////////////////////////////////////////////
+
+//캐싱 데코레이터
+
+// function test(x , y , z){
+//     console.log(x ,y, z);
+// }
+// test(1,2,1);
+// test(1,2,13);
+// test(1,2,16);
+// test(1,2,12);
+// test(1,2,11);
+// test(1,2,9);
+// test(1,2,3);
+// test(1,2,12);
+// test(1,2,10);
+// test(1,2,2);
+
+// function testwrapper(){
+
+//     return function(value){
+//         test(1,2,value);
+//     }
+// }
+
+// let wrappedtest = testwrapper();

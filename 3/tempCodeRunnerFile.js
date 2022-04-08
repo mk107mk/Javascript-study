@@ -1,1 +1,1 @@
-test = null;
+console.log(j);
