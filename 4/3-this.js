@@ -116,3 +116,11 @@ let user4 = {
 
 user4.sayHi(); // use arrow
 
+
+function test(){
+    this.a = 1;
+}
+
+let test1 = new test();
+
+console.log(test1.a);
