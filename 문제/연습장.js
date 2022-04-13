@@ -1,28 +1,30 @@
-let worker = {
-    someMethod(){
-        return 1;
-    },
-
-    slow(x) {
-        console.log(`slow(${x})을/를 호출함`);
-        return x * this.someMethod();
+class Car {
+    constructor(color){
+        this.color = color;
+        this.wheels =  4;
     }
-};
-
-function cachingDecorator(func) {
-    let cache = new Map();
-    return function(x) {
-        if(cache.has(x)) {
-            return cache.get(x);
-        }
-        let result = func(x);
-        cache.set(x, result);
-        return result;
-    };
+    drive() {
+        console.log(`drive... ${this.color}`);
+    }
 }
 
-console.log(worker.slow(1));
+class Bmw extends Car {
+    constructor(color) {
+        super();
+        this.color = color;
+        this.navigation = 1;
+    }
+    park(){
+        console.log('park...');
+    }
+    drive() {
+        super.drive();
+        console.log('asda');
+    }
+}
 
-worker.slow = cachingDecorator(worker.slow);
+const z4 = new Bmw('blue');
+z4.drive();
+console.log(z4.color);
 
-console.log(worker.slow(2));
+

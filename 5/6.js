@@ -1,17 +1,24 @@
-//
+//클래스 get set
 
-function Button(value){
-    this.value = value;
-    this.click = () => {
-        console.log(this.value);
+class Test{
+    _age = 0;
+    constructor(a){
+        // this._age = 0;
+        this.age = a;
     }
-    this.click2 = function(){
-        console.log(this.value);
+
+    set age(value){
+        if(value<0){
+            console.log('음수');
+        }
+        this._age = value;
+    }
+
+    get age(){
+        return this._age;
     }
 }
-let newButton = new Button(2);
-// let click = newButton.click2;
-// click();
+let newTest = new Test();
+console.log(newTest.age);
 
-let click = newButton.click;
-click();
+
