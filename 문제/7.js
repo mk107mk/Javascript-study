@@ -9,4 +9,5 @@ console.log(valueA);
 console.log(valueB);
 
 delete valueB.a;
+valueA = null;
 console.log(valueB.a); // undefined

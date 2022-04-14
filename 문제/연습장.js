@@ -1,30 +1,62 @@
-class Car {
-    constructor(color){
-        this.color = color;
-        this.wheels =  4;
+class Animal{ 
+    _name = '';
+    constructor(name = '동물'){
+    
+        this.name = name;
     }
-    drive() {
-        console.log(`drive... ${this.color}`);
+    set name(value){
+        this._name = value;
+    }
+    get name() {
+        return this._name;
+        }
+}
+
+class Dog extends Animal{
+    constructor(name){
+        super(name);
     }
 }
 
-class Bmw extends Car {
-    constructor(color) {
-        super();
-        this.color = color;
-        this.navigation = 1;
-    }
-    park(){
-        console.log('park...');
-    }
-    drive() {
-        super.drive();
-        console.log('asda');
+class Cat extends Animal{
+    constructor(name){
+        super(name);
     }
 }
 
-const z4 = new Bmw('blue');
-z4.drive();
-console.log(z4.color);
+let mong = new Dog('강아지');
+console.log(mong.name);
+
+
+let yumi = new Cat();
+console.log(yumi.name);
+yumi.name = '고양이';
+console.log(yumi.name);
+
+
+// function Animal(name){
+//     this.name = '동물';
+//     console.log(this);
+//     this.setName = function(value) {
+//         this.name = value;
+//         return this.name;
+//     }
+
+//     this.getName = function(){
+//         console.log(this.name);
+//         console.log(this);
+//     }
+// };
+
+// function Dog(name){
+//     this.name = name;
+// }
+
+// let newAni = new Animal();
+// Dog.prototype = newAni;
+
+// let newDog = new Dog();
+// newDog.setName('강아지');
+// newDog.getName();
 
 
