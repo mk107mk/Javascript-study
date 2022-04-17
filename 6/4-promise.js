@@ -1,3 +1,41 @@
+//promise
+
+// let promise = function(value){
+//     return new Promise(function(resolve, reject){
+//         setTimeout(function(){
+//             if(value){
+//                 resolve('해결 완료');
+//             }else{
+//                 reject('실패');
+//             }
+//         },1000);
+//     });
+// };
+
+// promise(true)
+// .then(function(text){
+//     //성공시
+//     console.log(text);
+// }, function(error){
+//     //실패시
+//     console.log(error);
+// })
+
+// promise(true)
+// .then(JSON.parse)
+// .catch(function(){
+//     console.log('체이닝 중간에 에러가!');
+// })
+// .then(function(text){
+//     console.log(text);
+// }, function(error){
+//     console.log(error);
+// })
+
+
+
+///////////////////////////////////////////////////////////////
+
 // const promise = new Promise((resolve, reject) => {
 //     //resolve('ok');
 //     setTimeout(() => {
@@ -95,3 +133,29 @@
 // }
 
 // delay(3000).then(() => console.log('3초후 실행'));
+
+//////////////////////////////////////////////////////////////////
+
+// Producer
+const promise = new Promise((resolve, reject) => {
+    console.log('doing something...');
+    setTimeout(() => {
+        // resolve('kim');
+        reject('error');
+    },2000)
+})
+
+// 프로미스를 만드는 순간 전달한 executor 라는 함수가 바로 실행된다.
+
+// Consummers: then, catch, finally
+
+promise.then((value) => {
+    console.log(value);
+})
+.catch(error => {
+    console.log(error);
+})
+.finally(() => {
+    console.log('finally');
+});
+// value : resolve, reject에 전달된 값

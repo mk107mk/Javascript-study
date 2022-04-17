@@ -1,4 +1,50 @@
-// 파라미터로 함수를 전달하는 함수
+// 콜백 - 다른 함수가 실행을 끝낸 뒤 실행되는 함수, 파라미터로 함수를 전달하는 함수
+
+// 자바스크립트에서 함수는 object이다
+// 이 때문에 함수는 다른 함수의 인자로 쓰일 수도, 어떤 함수에 의해 리턴될 수도 있다
+// 이러한 함수를 고차 함수라고 하고 인자로 넘겨지는 함수를 콜백함수 라고 한다
+
+// 콜백 함수가 필요한 이유 - 자바스크립트는 이벤트 기반 언어이기 때문에 
+// 자바스크립트는 다음 명령어를 실행하기 전 이전 명령어의 응답을 기다리기보단, 
+// 다른 이벤트들을 기다리며 명령을 수행한다
+
+
+// function first() {
+//     console.log(1);
+// }
+
+// function second() {
+//     console.log(2);
+// }
+// first();
+// second();
+
+
+// function first() {
+//     setTimeout(function(){
+//         console.log(1);
+//     },1000)
+// }
+
+// function second() {
+//     console.log(2);
+// }
+// first();
+// second();
+
+function first(callback) {
+    setTimeout(function(){
+        console.log(1);
+        callback();
+    },1000)
+ 
+}
+
+first(function(){
+    console.log(2);
+});
+
+
 
 // 콜백 함수 원칙
 
@@ -100,4 +146,5 @@
 // 함수의 매개변수로 넘겨지는 콜백 함수가 반복되어 코드의 들여쓰기 수준이
 // 감당하기 힘들어질 정도로 깊어지는 현상
 // promise를 사용하여 콜백지옥을 해결할 수 있다
+
 
