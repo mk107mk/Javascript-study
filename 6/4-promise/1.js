@@ -160,6 +160,7 @@
 // });
 // value : resolve, reject에 전달된 값
 
+
 // const fetchNumber = new Promise((resolve,reject) => {
 //     setTimeout(() => resolve(1), 1000)
 // });
@@ -209,14 +210,19 @@ const func1 = () => {
     });
 };
 
-const func2 = () => 
+const func2 = () => {
      new Promise((resolve,reject) => {
         setTimeout(() => {
             resolve('test2');
         },1000);
     });
+}
 
 
-
-func1().then(console.log);
+func1().then(function(value){
+    console.log(value)});
 func2().then(console.log);
+
+const fetchNumber = new Promise((resolve,reject) => {
+    setTimeout(() => resolve(1),1000)
+})

@@ -4,8 +4,8 @@ class UserStorage {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           if (
-            (id === 'ellie' && password === 'dream') ||
-            (id === 'coder' && password === 'academy')
+            (id === 'abc' && password === '123') ||
+            (id === 'def' && password === '456')
           ) {
             resolve(id);
           } else {
@@ -18,8 +18,8 @@ class UserStorage {
     getRoles(user) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
-          if (user === 'ellie') {
-            resolve({ name: 'ellie', role: 'admin' });
+          if (user === 'abc') {
+            resolve({ name: 'abc', role: 'admin' });
           } else {
             reject(new Error('no access'));
           }
@@ -37,12 +37,12 @@ class UserStorage {
   
   // Original code from Youtube course
   const userStorage = new UserStorage();
-  const id = prompt('enter your id');
-  const password = prompt('enter your passrod');
+  const id = 'abc';
+  const password = '123';
   userStorage
     .loginUser(id, password)
     .then(userStorage.getRoles)
-    .then(user => alert(`Hello ${user.name}, you have a ${user.role} role`))
+    .then(user => console.log(`Hello ${user.name}, you have a ${user.role} role`))
     .catch(console.log);
   
   // Homework Answer 

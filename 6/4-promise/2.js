@@ -38,32 +38,26 @@
 //     })
 //     .then(num => console.log(num));
 
-// const getHen = () => 
+// const first = () => 
 //     new Promise((resolve,reject) => {
-//         setTimeout(() => resolve('닭'), 1000);
+//         setTimeout(() => resolve('first'), 1000);
 //     });
 
-
-
-// const getEgg = (hen) => 
+// const second = (value) => 
 //     new Promise((resolve,reject) => {
-//         setTimeout(() => resolve(`${hen} => 달걀`), 1000);
+//         setTimeout(() => resolve(`${value} => second`), 1000);
 //     });
 
-
-
-// const cook = (egg) => 
+// const third = (value) => 
 //     new Promise((resolve,reject) => {
-//         setTimeout(() => resolve(`${egg} => 프라이`), 1000);
+//         setTimeout(() => resolve(`${value} => third`), 1000);
 //     });
 
+// first()
+//     .then(value => second(value))
+//     .then(value => third(value))
+//     .then(value => console.log(value));
 
-
-
-// getHen()
-//     .then(hen => getEgg(hen))
-//     .then(egg => cook(egg))
-//     .then(meal => console.log(meal));
 
 const func1 = () => {
     return new Promise((resolve,reject) => {
@@ -80,7 +74,31 @@ const func2 = () =>
         },1000);
     });
 
+const func3 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        //resolve('test3');
+        reject('error');
+    },1000)
+})
 
+const func4 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('test4');
+       // reject('error');
+    },1000)
+})
 
-func1().then(console.log);
-func2().then(console.log);
+// func1().then(console.log);
+// func2().then(console.log);
+
+func3.then(console.log, console.log).catch(() => 123).then(val => {
+        console.log(val, '----');
+    });
+
+// func4.then(value => {
+//     console.log(value);
+// })
+// func4.then(function(value){
+//     console.log(value);
+// })
+

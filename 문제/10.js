@@ -34,31 +34,59 @@
 
 //수정
 
-
 class SmartPhone {
-    constructor(name){
-        this.name = name;
+    phoneName = '';
+    constructor(phoneName){
+        this.phoneName = phoneName;
     }
     callWithPhone() {
-        console.log(`${this.name} 전화하기`);
+        console.log(` ${this.phoneName} 전화하기`);
     }
 
     searchWithPhone() {
-        console.log(`${this.name} 검색`);
+        console.log(` ${this.phoneName} 검색`);
     }
 }
 
-class IPhone extends SmartPhone {}
+class IPhone extends SmartPhone{
+  constructor(phoneName = '아이폰'){
+      super(phoneName);
+  }
+}
 
-class Galaxy extends SmartPhone {}
+class Galaxy extends SmartPhone{
+    constructor(phoneName = '갤럭시'){
+        super(phoneName);
+    }
+}
 
 
-const iPhone = new IPhone('아이폰');
-const galaxy = new Galaxy('갤럭시');
-    
-iPhone.callWithPhone();
-iPhone.searchWithPhone();
-galaxy.callWithPhone();
-galaxy.searchWithPhone();
+function callAndSearch(...value) {
+    let arr = [...value];
+    arr.forEach(value => {
+         phone.callWithPhone.call(value);
+         phone.searchWithPhone.call(value);
+    })
+}
+
+const phone = new SmartPhone;
+
+const iphone = new IPhone();
+const galaxy = new Galaxy();
+
+callAndSearch(iphone,galaxy);
+
+
+
+class Lg extends SmartPhone{
+    constructor(phoneName = '엘지'){
+        super(phoneName);
+    }
+}
+
+const lg = new Lg();
+
+callAndSearch(iphone,galaxy,lg);
+
 
 

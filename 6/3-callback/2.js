@@ -1,29 +1,30 @@
-// JavaScript is synchronous.
-// Execute the code block by orger after hoisting.
-// hoisting: var, function declaration
-console.log('1');
-setTimeout(() => console.log('2'), 1000);
-console.log('3');
+// JavaScript 는 synchronous 하다 (동기적이다)
+// 코드가 hoisting이 된 이후부터 작성 순서에 맞춰 동기적으로 실행된다
+// hoisting: var, function 
 
-// Synchronous callback
-function printImmediately(print) {
-  print();
-}
-printImmediately(() => console.log('hello'));
+// console.log('1');
+// setTimeout(() => console.log('2'), 1000);
+// console.log('3');
 
-// Asynchronous callback
-function printWithDelay(print, timeout) {
-  setTimeout(print, timeout);
-}
-printWithDelay(() => console.log('async callback'), 2000);
+// // Synchronous callback
+// function printImmediately(print) {
+//   print();
+// }
+// printImmediately(() => console.log('hello'));
+
+// // Asynchronous callback
+// function printWithDelay(print, timeout) {
+//   setTimeout(print, timeout);
+// }
+// printWithDelay(() => console.log('async callback'), 2000);
 
 // Callback Hell example
 class UserStorage {
   loginUser(id, password, onSuccess, onError) {
     setTimeout(() => {
       if (
-        (id === 'ellie' && password === 'dream') ||
-        (id === 'coder' && password === 'academy')
+        (id === 'abc' && password === '123') ||
+        (id === 'def' && password === '456')
       ) {
         onSuccess(id);
       } else {
@@ -34,8 +35,8 @@ class UserStorage {
 
   getRoles(user, onSuccess, onError) {
     setTimeout(() => {
-      if (user === 'ellie') {
-        onSuccess({ name: 'ellie', role: 'admin' });
+      if (user === 'abc') {
+        onSuccess({ name: 'abc', role: 'admin' });
       } else {
         onError(new Error('no access'));
       }
@@ -44,8 +45,8 @@ class UserStorage {
 }
 
 const userStorage = new UserStorage();
-const id = prompt('enter your id');
-const password = prompt('enter your passrod');
+const id = 'abc';
+const password = '123';
 userStorage.loginUser(
   id,
   password,
@@ -53,7 +54,7 @@ userStorage.loginUser(
     userStorage.getRoles(
       user,
       userWithRole => {
-        alert(
+        console.log(
           `Hello ${userWithRole.name}, you have a ${userWithRole.role} role`
         );
       },
@@ -66,3 +67,4 @@ userStorage.loginUser(
     console.log(error);
   }
 );
+

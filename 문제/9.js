@@ -11,11 +11,13 @@
 
 // 수정
 
-let value = {a : 1};
+let value = {c : 1};
 
-function Test() {
+function Test(value) {
     let cloneValue = {...value, a : 23};
     return cloneValue;
 }
+console.log(Test(value));
+value.c = 3;
+console.log(Test(value));
 
-console.log(Test());

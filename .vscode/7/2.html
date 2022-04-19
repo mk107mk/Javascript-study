@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <div class="one">
+            <div class="two">
+                <div class="three" style = "width: 20px; height: 30px; background-color: red;">
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+    document.querySelector('.one').addEventListener('click',function(event){
+        console.log('one');
+        console.log(event);
+        console.log(event.target.getAttribute('class'));
+    },{
+        capture:true
+    })
+
+    document.querySelector('.two').addEventListener('click',function(event){
+        console.log('two');
+        event.stopImmediatePropagation();
+    },{
+        capture:true
+    })
+
+    document.querySelector('.two').addEventListener('click',function(event){
+        console.log('twotwo');
+        event.stopPropagation();
+    },{
+        capture:true
+    })
+
+    document.querySelector('.three').addEventListener('click',function(event){
+        console.log('three');
+    },{
+        capture:true
+    })
+    // 이벤트 버블링 , 캡쳐링 , 핸들링,
+    // preventDefault , stopPropagation, hidden class
+</script>

@@ -17,6 +17,7 @@ func().then(console.log);
 async function asyncFunc() {
     return '해결완료';
 }
+
 asyncFunc().then(function(value){
     console.log(value);
 });
