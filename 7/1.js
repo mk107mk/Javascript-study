@@ -5,7 +5,7 @@ setTimeout(function cb(){
     console.log('second')
 },0);
 wait3Second();
-console.log('thisd');
+console.log('third');
 
 function wait3Second(){
     let start =  Date.now(), now = start;
