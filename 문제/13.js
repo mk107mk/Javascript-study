@@ -1,5 +1,5 @@
-// 아래 코드가 동작하는 과정을 Heap, Call Stack, Web Api, 
-// Callback Queue를 이용해 설명하기
+// 아래 코드가 동작하는 과정을 Heap, Call Stack, Web Api, Callback Queue를 이용해 설명하기
+
 
 
 async function request() {
@@ -11,23 +11,42 @@ async function request() {
 	})
 }
 
-async function main() {
-	console.log('start');
+// async function main() {
+// 	console.log('start');
 
-	const interval =setInterval(() => {
-		console.log('interval');
-	}, 100)
+// 	const interval =setInterval(() => {
+// 		console.log('interval');
+// 	}, 100)
 
-	await request()
-	await request()
+// 	await request()
+// 	await request()
 
-	clearInterval(interval);
+// 	clearInterval(interval);
 
-	console.log('end');
+// 	console.log('end');
+// }
+
+// main();
+
+async function func(){
+console.log("script start");
+
+setTimeout(function () {
+  console.log("setTimeout");
+}, 2000);
+
+await request();
+
+Promise.resolve()
+  .then(function () {
+	  setTimeout(function(){
+    console.log("promise1");
+  },1000)
+})
+  .then(function () {
+    console.log("promise2");
+  });
+
+console.log("script end");
 }
-
-main();
-
-// start -> interval -> finish -> end
-// start -> setInterval -> promise 
-// -> setInterval -> promise -> end
+func();

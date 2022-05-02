@@ -22,6 +22,7 @@
 //     })
 // }) 
 
+ 
 //promise
 
 // function execute(){
@@ -50,15 +51,7 @@ async function execute(){
      return 'finish';
       
 }
-    // execute().then(function(value){
-    //     console.log(value);
-    //     execute().then(function(value){
-    //         console.log(value);
-    //         execute().then(function(value){
-    //             console.log(value);
-    //         })
-    //     });
-    // });
+
      async function aa(){
         
         let exe = await execute();
@@ -72,24 +65,7 @@ async function execute(){
 
 
 
-    // execute().then(function(value){
-    //     console.log(value);
-    //     return execute().then(function(value){
-    //         console.log(value);
-    //        return  execute().then(function(value){
-    //             console.log(value);
-    //         })
-    //     });
-    // });
-
-    // async function execute(){
-    //     await new Promise(resolve => setTimeout(resolve,1000));
-    //     console.log('finish');
-          
-    // }
-
-    // execute().then(execute().then(execute()));
-
+  
 
 
 

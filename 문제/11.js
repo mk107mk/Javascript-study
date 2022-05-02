@@ -27,29 +27,29 @@
 // execute(function(){
 //     execute(function(){
 //         execute(function(){
-    
+
 //         }, function(){
-          
+
 //         })
 //     }, function(){
 //         execute(function(){
-    
+
 //         }, function(){
-          
+
 //         })
 //     })
 // }, function(){
 //     execute(function(){
 //         execute(function(){
-    
+
 //         }, function(){
-          
+
 //         })
 //     }, function(){
 //         execute(function(){
-    
+
 //         }, function(){
-          
+
 //         })
 //     })
 // })
@@ -74,70 +74,72 @@
 //     });
 // }
 
-
 // execute()
+// .catch(function(){
+//     console.log('에러잡힘');
+// })
 //     .then(function () {
-//         execute()
-//         .then(function () {
-//             execute()
-//             .then(function () { })
-//             .catch(function () { })
-//         })
-//         .catch(function () {
-//             execute()
-//             .then(function () { })
-//             .catch(function () { })
-//         })
+//         return execute()
+//         .catch(function(){
+//             console.log('에러잡힘');
+//         });
+//     })
+//     .then(function () {
+//         return execute();
+//     })
+//     .then(function () {
+
 //     })
 //     .catch(function () {
-//         execute()
-//         .then(function () {
-//             execute()
-//             .then(function () { })
-//             .catch(function () { })
-//         })
-//         .catch(function () {
-//             execute()
-//             .then(function () { })
-//             .catch(function () { })
-//         })
+
 //     })
 
 
+//      execute()
+//     .catch(function(){
+//         console.log('에러잡힘');
+//     }).then(function () {
+//         return execute();
+//     })
 
 // async-await
 
-// function execute() {
-//     return new Promise(function (onSuccess, onError) {
-//         console.log('execute');
-//         setTimeout(() => {
-//             const randNum = Math.floor(Math.random() * 100);
-//             // 랜덤 값이 짝수일 경우
-//             if (randNum % 2 === 0) {
-//                 console.log(`${randNum} success`);
-//                 onSuccess();
-//             } else {
-//                 console.log(`${randNum} error`);
-//                 onError();
-//             }
-//         }, 1000);
-//     });
-// }
-
-async function execute(){
-    await new Promise(resolve => setTimeout(resolve,1000));
-    // console.log('finish');
-     return 'finish';
-      
+function execute() {
+    return new Promise(function (onSuccess, onError) {
+        console.log('execute');
+        setTimeout(() => {
+            const randNum = Math.floor(Math.random() * 100);
+            // 랜덤 값이 짝수일 경우
+            if (randNum % 2 === 0) {
+                console.log(`${randNum} success`);
+                onSuccess();
+            } else {
+                onError(`${randNum} error`);
+            }
+        }, 1000);
+    });
 }
 
-async function aa(){
-        
-    let exe = await execute();
-    console.log(exe);
-    await execute();
-    console.log('finish');
-    await execute();
-    console.log('finish');
+
+async function aa() {
+    try {
+        await execute();
+    } catch (e) {
+        console.log(e);
+    }
+
+    try {
+        await execute();
+    } catch (e) {
+        console.log(e);
+    }
+
+    try {
+        await execute();
+    } catch (e) {
+        console.log(e);
+    }
+
 }
 aa();
+

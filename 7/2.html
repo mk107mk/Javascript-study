@@ -13,24 +13,25 @@
 <script>
     document.querySelector('.one').addEventListener('click',function(event){
         console.log('one');
-        console.log(event);
-        console.log(event.target.getAttribute('class'));
+       // console.log(event);
+        // console.log(event.target.getAttribute('class'));
     },{
         capture:true
     })
 
     document.querySelector('.two').addEventListener('click',function(event){
         console.log('two');
-        event.stopImmediatePropagation();
+        //event.stopImmediatePropagation();
     },{
         capture:true
     })
 
+
     document.querySelector('.two').addEventListener('click',function(event){
         console.log('twotwo');
-        event.stopPropagation();
+        //event.stopPropagation();
     },{
-        capture:true
+        capture:false
     })
 
     document.querySelector('.three').addEventListener('click',function(event){
