@@ -1,0 +1,12 @@
+<!-- DOM이 준비된 후에 실행, DOMContentLoaded 이벤트 발생 전에 실행 -->
+
+
+<p>스크립트 앞</p>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => alert("`defer` 스크립트가 실행된 후, DOM이 준비")); 
+</script>
+
+<script defer src="https://javascript.info/article/script-async-defer/long.js?speed=1"></script>
+
+<p>스크립트 뒤</p>

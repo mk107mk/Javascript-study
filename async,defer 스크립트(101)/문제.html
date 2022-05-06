@@ -1,0 +1,36 @@
+<!-- # FCP 최적화
+
+FCP - first contentful paint
+
+아래 html 코드의 FCP 타이밍을 최적화(빠르게 만드는)하기 -->
+
+<html>
+	<head>
+	
+	
+         <script defer src="https://javascript.info/article/script-async-defer/long.js?speed=1"></script>
+        <script defer src="loadScript.js"></script>
+       <style>
+			.container {
+					background: blue;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			가나다라
+		</div>
+	</body>
+
+</html>
+
+<script>
+    
+const randoms = [];
+	for(let i = 0; i < 100000000000; i++) {
+		randoms.push(Math.random())
+		}
+
+        alert('finish');
+
+</script>

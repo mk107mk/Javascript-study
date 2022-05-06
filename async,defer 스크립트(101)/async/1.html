@@ -1,0 +1,21 @@
+<!-- async속성이 붙은 스크립트는 페이지와 완전히 독립적으로 동작
+백그라운드에서 다운
+async스크립트 실행중에는 HTML파싱이 멈춘다
+
+DOMContentLoaded 이벤트와 async 스크립트는 서로를 기다리지 않는다
+다른 스크립트와 async스크립트는 서로를 기다리지 않는다 -->
+
+<html>
+    <body>
+        <p>스크립트 앞</p>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => alert("DOM이 준비"));
+          </script>
+          
+          <script async src="https://javascript.info/article/script-async-defer/long.js"></script>
+          <script async src="https://javascript.info/article/script-async-defer/small.js"></script>
+
+        <p>스크립트 뒤</p>
+    </body>
+</html>

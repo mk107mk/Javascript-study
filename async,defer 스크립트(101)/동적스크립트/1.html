@@ -1,0 +1,19 @@
+<!-- 동적 스크립트는 기본적으로 async처럼 동작한다 -->
+<html>
+    <body>
+        <p>동적 스크립트</p>
+    </body>
+</html>
+
+<script>
+    function loadScript(src) {
+  let script = document.createElement('script');
+  script.src = src;
+  script.async = false;
+  document.body.append(script);
+}
+
+// async=false이기 때문에 long.js가 먼저 실행된다
+loadScript("https://javascript.info/article/script-async-defer/long.js");
+loadScript("https://javascript.info/article/script-async-defer/small.js");
+</script>

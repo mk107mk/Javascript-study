@@ -1,0 +1,17 @@
+<!-- defer 속성이 있는 스크립트를 백그라운드에서 다운로드 한다
+스크립트를 다운로드 하는동안 HTML파싱이 멈추지 않는다 -->
+
+<html>
+    <body>
+        <p>스크립트 앞</p>
+
+        <script defer src="https://javascript.info/article/script-async-defer/long.js?speed=1">
+
+        </script>
+
+        <p>스크립트 뒤</p>
+    </body>
+</html>
+
+<!-- defer 속성은 외부 스크립트에만 유효하다
+<script>에 src가 없으면 defer 속성은 무시된다 -->

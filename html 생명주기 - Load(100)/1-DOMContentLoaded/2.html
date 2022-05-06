@@ -1,0 +1,33 @@
+<html>
+
+<body>
+
+    <div class="content">
+
+    </div>
+
+    <style>
+        .content{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+    </style>
+</body>
+
+
+</html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      alert("DOM이 준비되었습니다!");
+    });
+  </script>
+  
+  <script>
+    alert("라이브러리 로딩이 끝나고 인라인 스크립트가 실행되었습니다.");
+  </script>
+
+<!-- html 문서를 처리하는 도중 script태그를 만나면 DOM트리 구성을 멈추고 script를 실행한다
+실행이 완료된 후에 html문서를 처리한다 -->

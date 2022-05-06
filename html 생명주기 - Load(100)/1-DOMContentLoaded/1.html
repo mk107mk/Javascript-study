@@ -1,0 +1,25 @@
+<html>
+
+<body style="overflow:auto">
+
+    <img id="img" src="https://en.js.cx/clipart/train.gif?speed=1&cache=0">
+
+</body>
+
+
+</html>
+
+
+<script>
+    function ready(){
+        alert('dom이 준비됨');
+
+        alert(`이미지 사이즈:${img.offsetWidth}x${img.offsetHeight}`);
+    }
+
+    document.addEventListener("DOMContentLoaded", ready);
+</script>
+
+<!-- 브라우저가 html을 파싱하고 DOM트리를 완성하는 즉시 발생한다.
+이미지 파일이나 스타일시트등의 기타 자원을 기다리지 않기 때문에 
+이미지 사이즈는 0x0이 출력된다. -->

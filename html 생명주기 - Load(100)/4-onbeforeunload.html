@@ -1,0 +1,15 @@
+<!-- 사용자가 현재 페이지를 떠나 다른 페이지로 이동할 때, 창을 닫을 때
+beforeunload 핸들러에서 추가 확인을 요청할 수 있다 -->
+
+<html>
+    <body>
+        befoeunload
+    </body>
+
+</html>
+
+<script>
+    window.onbeforeunload = function(){
+        return "페이지 나가기?";
+    }
+</script>

@@ -1,0 +1,21 @@
+<!-- document.readyState - 현재 로딩상태를 알려주는 프로퍼티 -->
+<html>
+    <body>
+        <p>readyState</p>
+    </body>
+
+</html>
+
+<script>
+    function readyState(){
+        alert('DOM 완성');
+    }
+
+    if(document.readyState == 'loading'){
+        alert('DOM 미완성');
+        document.addEventListener('DOMContentLoaded',readyState);
+        
+    }else{
+        readyState();
+    }
+</script>
