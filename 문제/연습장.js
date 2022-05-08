@@ -1,30 +1,12 @@
-function timer(time){
-    return new Promise(function(resolve,reject){
-        setTimeout(function(){
-           resolve(time);
-        },time)
-    })
-}
+let arr = [1,2,3,4,5];
+arr.map((value, index) => {
+    console.log(value);
+    console.log(index);
+});
 
-// timer(1000)
-// .then(function(time){
-//     console.log('time' + time);
-//     return timer(time + 1000);
-// })
-// .then(function(time){
-//     console.log('time' + time);
-//     return timer(time + 1000);
-// })
-// .then(function(time){
-//     console.log('time' + time);
-// })
+let obj = {a:1 ,b:2,c:3};
 
-async function async() {
-    let time = await timer(1000);
-    console.log('time' + time);
-    time = await timer(time + 1000);
-    console.log('time' + time);
-    time = await timer(time + 1000);
-    console.log('time' + time);
+for(let key in obj){
+    console.log(obj[key]);
+    console.log(key)
 }
-async(1000);

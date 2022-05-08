@@ -33,44 +33,38 @@ function deepCopyValue(value) {
 }
 
 function deepCopyObj(value) {
-    let cloneObj = {}
-    cloneObj = { ...cloneObj, ...value }
-
+    let cloneObj = {};
+    cloneObj = {...cloneObj, ...value};
     return cloneObj;
+ 
 }
 
 function deepCopyArr(value) {
-    let cloneArr = []
-    cloneArr = [...cloneArr, ...value];
-
-    return cloneArr;
+    let cloneArray = [];
+    cloneArray = [...cloneArray, ...value];
+    return cloneArray;
 }
 
 
 function deepCopy(value) {
-
     let result;
-
-    if (typeof value !== 'object') {   // 값일때
+    if(typeof value != 'object'){
         result = deepCopyValue(value);
 
-    } else if (Array.isArray(value) == true) { // 배열일 때
-
+    }else if(Array.isArray(value)){
         result = deepCopyArr(value);
-        value.forEach((forValue, index) => {
-            value[index] = deepCopy(forValue);
+        value.map((arrValue, arrIndex) => {
+            value[arrIndex] = deepCopy(arrValue);
         })
 
-    } else {                                    //객체일때
-
+    }else{
         result = deepCopyObj(value);
-        for (let key in value) {
-            value[key] = deepCopy(value[key])
-        }
-
+       for(let key in value){
+           value[key] = deepCopy(value[key]);
+       }
     }
 
-    return result;
+  return result;
 }
 
 const clonedList = deepCopy(original);

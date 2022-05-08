@@ -1,5 +1,5 @@
-// event roop - 면접중요
-// 이벤트 버블링, 캡쳐링 - 면접중요
+// event roop - 중요
+// 이벤트 버블링, 캡쳐링 - 중요
 console.log('fisrt');
 setTimeout(function cb(){
     console.log('second')
